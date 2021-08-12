@@ -31,8 +31,7 @@
 		"link": "npm link @labor-digital/bits",
 		"clean": "rimraf ./dist",
 		"build": "npm run build:ts && npm run build:bundle",
-		"build:ts": "npm run clean && tsc && npm run build:ts-cleanup",
-		"build:ts-cleanup": "rimraf ./dist/src && node ../../.build/moveDir.js ./dist/plugins/Translator/src ./dist && rimraf ./dist/plugins",
+		"build:ts": "npm run clean && tsc",
 		"build:bundle": "rollup --config rollup.config.js",
 		"watch": "npm run clean && tsc --project ./tsconfig.watch.json --watch"
 	},
