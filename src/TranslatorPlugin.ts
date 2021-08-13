@@ -21,9 +21,6 @@ import type {PlainObject} from '@labor-digital/helferlein';
 import {TranslatorFactory} from './TranslatorFactory';
 import type {ITranslateOptions, ITranslatorOptions} from './types';
 
-/**
- * @hidden
- */
 export class TranslatorPlugin implements IBitPlugin
 {
     protected _options: ITranslatorOptions;
@@ -33,12 +30,18 @@ export class TranslatorPlugin implements IBitPlugin
         this._options = options ?? {};
     }
     
+    /**
+     * @hidden
+     */
     public initialized(app: BitApp): void
     {
         app.di.setFactory('translatorFactory', () => new TranslatorFactory(this._options))
            .setFactory('translator', (di: DiContainer) => di.translatorFactory.requireGlobalTranslator());
     }
     
+    /**
+     * @hidden
+     */
     public extendBits(inject: IBitPluginExtensionInjector): void
     {
         inject('t', function (
